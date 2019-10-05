@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-18.04
         steps:
             - run: |
-                  cat > ~/.gist <<< "${{secrets.GIST_TOKEN }}"
+#                  cat > ~/.gist <<< "${{secrets.GIST_TOKEN }}"
                   sudo apt-get update && sudo apt-get install -y gist
-                  php7.3 -r 'phpinfo();' | gist-paste --update 5b592d89f348b0fef996c01604fc9eec --file ubuntu-18.04-php-7.3.txt
+#                  php7.3 -r 'phpinfo();' | gist-paste --update 5b592d89f348b0fef996c01604fc9eec --file ubuntu-18.04-php-7.3.txt
 
