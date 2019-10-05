@@ -11,6 +11,6 @@ jobs:
         steps:
             -   uses: actions/checkout@v1
             -   run: |
-                    for VERSION in 7.1 7.2 7.3; do
+                    for VERSION in 7.0 7.1 7.2 7.3; do
                           php$VERSION ./post-phpinfo.php 5b592d89f348b0fef996c01604fc9eec ${{ matrix.os }}-php-$VERSION.txt <<< "${{secrets.GIST_TOKEN }}" || true
                     done
