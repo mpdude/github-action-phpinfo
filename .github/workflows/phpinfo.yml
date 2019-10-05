@@ -21,4 +21,4 @@ jobs:
                           php$VERSION ./post-phpinfo.php 5b592d89f348b0fef996c01604fc9eec ${{ matrix.os }}-php-$VERSION.txt <<< "${{secrets.GIST_TOKEN }}" || echo "Version $VERSION does not exist"
                     done
             -   uses: mxschmitt/action-tmate@v1
-                if: ${{ matrix.os }} == 'ubuntu-18.04'
+                if: matrix.os == 'ubuntu-18.04'
