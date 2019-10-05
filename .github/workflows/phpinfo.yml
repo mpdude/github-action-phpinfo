@@ -2,7 +2,7 @@ on: [push]
 name: Update phpinfo
 
 jobs:
-    Update phpinfo:
+    phpinfo:
         name: phpinfo
         runs-on: ubuntu-18.04
         steps:
