@@ -1,0 +1,13 @@
+on: [push]
+name: Update phpinfo
+
+jobs:
+    Update phpinfo:
+        name: phpinfo
+        runs-on: ubuntu-18.04
+        steps:
+            - run: |
+                  cat > ~/.gist <<< "${{secrets.GIST_TOKEN }}"
+                  apt-get update && apt-get install -y gist
+                  php7.3 -r 'phpinfo();' | gist-paste --update 5b592d89f348b0fef996c01604fc9eec --file ubuntu-18.04-php-7.3.txt
+
