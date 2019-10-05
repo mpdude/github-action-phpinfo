@@ -9,7 +9,8 @@ jobs:
                 os: [ubuntu-16.04, ubuntu-18.04, macOS-10.14]
         runs-on: ${{ matrix.os }}
         steps:
-            - uses: actions/checkout@v1
-            - run: |
-                  cat > ~/.gist <<< "${{secrets.GIST_TOKEN }}"
-                  for VERSION in 7.0 7.1 7.2 7.3; do php$VERSION ./post-phpinfo.php 5b592d89f348b0fef996c01604fc9eec ${{ matrix.os }}-php-$VERSION.txt || true; done
+            -   uses: actions/checkout@v1
+            -   run: |
+                    for VERSION in 7.1 7.2 7.3; do
+                          php$VERSION ./post-phpinfo.php 5b592d89f348b0fef996c01604fc9eec ${{ matrix.os }}-php-$VERSION.txt <<< "${{secrets.GIST_TOKEN }}" || true
+                    done

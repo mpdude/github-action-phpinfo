@@ -24,12 +24,9 @@ curl_setopt(
     CURLOPT_HTTPHEADER,
     [
         'Content-Type: application/javascript',
-        'Authorization: token ' . trim(file_get_contents(getenv('HOME') . '/.gist')),
+        'Authorization: token ' . trim(stream_get_contents(STDIN)),
         'User-Agent: php/curl',
     ]
 );
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$result = curl_exec($ch);
-curl_close($ch);
-
-print_r($result);
+curl_exec($ch);
