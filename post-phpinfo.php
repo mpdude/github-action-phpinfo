@@ -1,6 +1,7 @@
 <?php
 
 ob_start();
+print 'Date generated: ' . date('c') . "\n\n";
 phpinfo();
 $info = ob_get_clean();
 

@@ -4,9 +4,12 @@ name: Update phpinfo
 jobs:
     phpinfo:
         name: phpinfo
-        runs-on: ubuntu-18.04
+        strategy:
+            matrix:
+                os: [ubuntu-14.04, ubuntu-18.04, windows-2019, windows-2016, macOS-10.14]
+        runs-on: ${{ matrix.os }}
         steps:
-            -   uses: actions/checkout@v1
+            - uses: actions/checkout@v1
             - run: |
                   cat > ~/.gist <<< "${{secrets.GIST_TOKEN }}"
-                  for VERSION in 7.0 7.1 7.2 7.3; do php$VERSION ./post-phpinfo.php 5b592d89f348b0fef996c01604fc9eec ubuntu-18.04-php-$VERSION.txt || true; done
+                  for VERSION in 7.0 7.1 7.2 7.3; do php$VERSION ./post-phpinfo.php 5b592d89f348b0fef996c01604fc9eec ${{ matrix.os }}-php-$VERSION.txt || true; done
