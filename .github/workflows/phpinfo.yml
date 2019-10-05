@@ -6,8 +6,7 @@ jobs:
         name: phpinfo
         runs-on: ubuntu-18.04
         steps:
+            -   uses: actions/checkout@v1
             - run: |
-#                  cat > ~/.gist <<< "${{secrets.GIST_TOKEN }}"
-                  sudo apt-get update && sudo apt-get install -y gist
-#                  php7.3 -r 'phpinfo();' | gist-paste --update 5b592d89f348b0fef996c01604fc9eec --file ubuntu-18.04-php-7.3.txt
-
+                  cat > ~/.gist <<< "${{secrets.GIST_TOKEN }}"
+                  for VERSION in 7.0 7.1 7.2 7.3; do php$VERSION ./post-phpinfo.php 5b592d89f348b0fef996c01604fc9eec ubuntu-18.04-php-$VERSION.txt || true; done
