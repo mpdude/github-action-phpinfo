@@ -29,4 +29,7 @@ curl_setopt(
     ]
 );
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_exec($ch);
+$result = curl_exec($ch);
+curl_close($ch);
+
+print_r($result);
